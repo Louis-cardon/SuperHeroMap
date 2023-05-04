@@ -1,5 +1,13 @@
 var builder = WebApplication.CreateBuilder(args);
 
+
+// Add DbContext
+builder.Services.AddDbContext<SuperHeroMapContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));
+}
+);
+
 // Add services to the container.
 
 builder.Services.AddControllers();
