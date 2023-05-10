@@ -3,7 +3,7 @@
     public class Incident
     {
         public int Id { get; set; } // ID unique de l'incident dans la base de données
-        public int ResourceId { get; set; } // ID de la ressource d'incident associée à cet incident
+        public int IncidentResourceId { get; set; } // ID de la ressource d'incident associée à cet incident
         public string CityName { get; set; } // Nom de la ville associée à cet incident
         public double Latitude { get; set; } // Latitude de la position géographique de cet incident
         public double Longitude { get; set; } // Longitude de la position géographique de cet incident
