@@ -45,9 +45,6 @@ namespace SuperHeroMapApi.Migrations
                     b.Property<double>("Longitude")
                         .HasColumnType("double precision");
 
-                    b.Property<int>("ResourceId")
-                        .HasColumnType("integer");
-
                     b.HasKey("Id");
 
                     b.HasIndex("IncidentResourceId");
@@ -131,9 +128,6 @@ namespace SuperHeroMapApi.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("IncidentResourceId")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ResourceId")
                         .HasColumnType("integer");
 
                     b.Property<int>("SuperHeroId")
