@@ -17,6 +17,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ISuperHeroService, SuperHeroService>();
 builder.Services.AddScoped<IIncidentService, IncidentService>();
 builder.Services.AddScoped<IIncidentResourceService, IncidentResourceService>();
+builder.Services.AddScoped<ISuperHeroIncidentService, SuperHeroIncidentService>();
 
 var app = builder.Build();
 
