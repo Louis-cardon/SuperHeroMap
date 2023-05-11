@@ -18,6 +18,7 @@ builder.Services.AddScoped<ISuperHeroService, SuperHeroService>();
 builder.Services.AddScoped<IIncidentService, IncidentService>();
 builder.Services.AddScoped<IIncidentResourceService, IncidentResourceService>();
 builder.Services.AddScoped<ISuperHeroIncidentService, SuperHeroIncidentService>();
+builder.Services.AddScoped<ISuperHeroIncidentResourceService, SuperHeroIncidentResourceService>();
 
 var app = builder.Build();
 
