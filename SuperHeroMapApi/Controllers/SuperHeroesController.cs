@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using SuperHeroMapApi.Services;
-
-namespace SuperHeroMapApi.Controllers
+﻿namespace SuperHeroMapApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
