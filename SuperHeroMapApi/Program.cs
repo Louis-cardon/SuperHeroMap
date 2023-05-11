@@ -15,6 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ISuperHeroService, SuperHeroService>();
+builder.Services.AddScoped<IIncidentService, IncidentService>();
 
 var app = builder.Build();
 
