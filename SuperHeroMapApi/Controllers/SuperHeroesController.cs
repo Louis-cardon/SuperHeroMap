@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SuperHeroMapApi.Services;
 
 namespace SuperHeroMapApi.Controllers
 {
@@ -6,11 +7,11 @@ namespace SuperHeroMapApi.Controllers
     [ApiController]
     public class SuperHeroesController : ControllerBase
     {
-        private readonly ISuperHeroService _superHeroService;
+        private readonly ISuperHeroService _SuperHeroService;
 
-        public SuperHeroesController(ISuperHeroService superHeroService)
+        public SuperHeroesController(ISuperHeroService SuperHeroService)
         {
-            _superHeroService = superHeroService;
+            _SuperHeroService = SuperHeroService;
         }
 
         // GET: api/SuperHeroes
@@ -19,7 +20,7 @@ namespace SuperHeroMapApi.Controllers
         {
             try
             {
-                var result = await _superHeroService.GetSuperHeroes();
+                var result = await _SuperHeroService.GetSuperHeroes();
                 return Ok(result);
             }
             catch (Exception ex)
@@ -34,7 +35,7 @@ namespace SuperHeroMapApi.Controllers
         {
             try
             {
-                var superHero = await _superHeroService.GetSuperHero(id);
+                var superHero = await _SuperHeroService.GetSuperHero(id);
 
                 if (superHero == null)
                 {
@@ -55,7 +56,7 @@ namespace SuperHeroMapApi.Controllers
         {
             try
             {
-                await _superHeroService.AddSuperHero(superHero);
+                await _SuperHeroService.AddSuperHero(superHero);
                 return CreatedAtAction("GetSuperHero", new { id = superHero.Id }, superHero);
             }
             catch (Exception ex)
@@ -75,7 +76,7 @@ namespace SuperHeroMapApi.Controllers
 
             try
             {
-                await _superHeroService.UpdateSuperHero(superHero);
+                await _SuperHeroService.UpdateSuperHero(superHero);
                 return NoContent();
             }
             catch (Exception ex)
@@ -90,13 +91,13 @@ namespace SuperHeroMapApi.Controllers
         {
             try
             {
-                var superHero = await _superHeroService.GetSuperHero(id);
+                var superHero = await _SuperHeroService.GetSuperHero(id);
                 if (superHero == null)
                 {
                     return NotFound();
                 }
 
-                await _superHeroService.DeleteSuperHero(superHero);
+                await _SuperHeroService.DeleteSuperHero(superHero);
 
                 return NoContent();
             }

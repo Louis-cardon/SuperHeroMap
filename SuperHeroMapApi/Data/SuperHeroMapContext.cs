@@ -11,7 +11,7 @@ namespace SuperHeroMapApi.Data
 
         public DbSet<Incident> Incidents { get; set; }
         public DbSet<IncidentResource> IncidentResources { get; set; }
-        public DbSet<SuperHero> SuperHeros { get; set; }
+        public DbSet<SuperHero> SuperHeroes { get; set; }
         public DbSet<SuperHeroIncident> SuperHeroIncidents { get; set; }
         public DbSet<SuperHeroIncidentResource> SuperHeroIncidentResources { get; set; }
 

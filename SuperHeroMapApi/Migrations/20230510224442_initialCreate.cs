@@ -25,7 +25,7 @@ namespace SuperHeroMapApi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "SuperHeros",
+                name: "SuperHeroes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -37,7 +37,7 @@ namespace SuperHeroMapApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_SuperHeros", x => x.Id);
+                    table.PrimaryKey("PK_SuperHeroes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -82,9 +82,9 @@ namespace SuperHeroMapApi.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SuperHeroIncidentResources_SuperHeros_SuperHeroId",
+                        name: "FK_SuperHeroIncidentResources_SuperHeroes_SuperHeroId",
                         column: x => x.SuperHeroId,
-                        principalTable: "SuperHeros",
+                        principalTable: "SuperHeroes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -108,9 +108,9 @@ namespace SuperHeroMapApi.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_SuperHeroIncidents_SuperHeros_SuperHeroId",
+                        name: "FK_SuperHeroIncidents_SuperHeroes_SuperHeroId",
                         column: x => x.SuperHeroId,
-                        principalTable: "SuperHeros",
+                        principalTable: "SuperHeroes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -154,7 +154,7 @@ namespace SuperHeroMapApi.Migrations
                 name: "Incidents");
 
             migrationBuilder.DropTable(
-                name: "SuperHeros");
+                name: "SuperHeroes");
 
             migrationBuilder.DropTable(
                 name: "IncidentResources");

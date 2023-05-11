@@ -28,9 +28,9 @@ namespace SuperHeroMapApi.Migrations
             { 10, "Evasion d’un prisonnier" },
                 });
 
-            // Insérer des SuperHeros
+            // Insérer des SuperHeroes
             migrationBuilder.InsertData(
-                table: "SuperHeros",
+                table: "SuperHeroes",
                 columns: new[] { "Id", "Name", "Latitude", "Longitude", "PhoneNumber" },
                 values: new object[,]
                 {
@@ -97,7 +97,7 @@ namespace SuperHeroMapApi.Migrations
 
             // Supprimer les SuperHeroes
             migrationBuilder.DeleteData(
-                table: "SuperHeros",
+                table: "SuperHeroes",
                 keyColumn: "Id",
                 keyValues: new object[] { 1, 2, 3 });
 

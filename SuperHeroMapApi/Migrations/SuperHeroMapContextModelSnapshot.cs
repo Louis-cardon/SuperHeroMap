@@ -93,7 +93,7 @@ namespace SuperHeroMapApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("SuperHeros");
+                    b.ToTable("SuperHeroes");
                 });
 
             modelBuilder.Entity("SuperHeroMapApi.Models.SuperHeroIncident", b =>
