@@ -1,14 +1,19 @@
-﻿namespace SuperHeroMapApi.Controllers
+﻿using SuperHeroMapApi.Services;
+using GeoCoordinatePortable;
+
+namespace SuperHeroMapApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class IncidentsController : ControllerBase
     {
         private readonly IIncidentService _incidentService;
+        private readonly ISuperHeroService _superHeroService;
 
-        public IncidentsController(IIncidentService incidentService)
+        public IncidentsController(IIncidentService incidentService, ISuperHeroService superHeroService)
         {
             _incidentService = incidentService;
+            _superHeroService = superHeroService;
         }
 
         // GET: api/Incidents
@@ -46,6 +51,43 @@
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        // GET: api/Incidents/Hero/5
+        [HttpGet("Hero/{id}")]
+        public async Task<IActionResult> GetIncidentHero(int id)
+        {
+            try
+            {
+                var incident = await _incidentService.GetIncident(id);
+                var listHero = await _superHeroService.GetSuperHeroes();
+                if (incident == null)
+                {
+                    return NotFound();
+                }
+
+                var nearbyHeroes = new List<SuperHero>();
+                var incidentCoordinate = new GeoCoordinate(incident.Latitude, incident.Longitude);
+
+                listHero = listHero.Where(f=>f.SuperHeroIncidentResources.Select(u=>u.IncidentResourceId).Contains(incident.IncidentResourceId)).ToList();
+
+                foreach (var hero in listHero)
+                {
+                    var heroCoordinate = new GeoCoordinate(hero.Latitude, hero.Longitude);
+                    var distance = incidentCoordinate.GetDistanceTo(heroCoordinate) / 1000; // Convertir la distance en kilomètres
+                    if (distance <= 50)
+                    {
+                        nearbyHeroes.Add(hero);
+                    }
+                }
+
+                return Ok(nearbyHeroes);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
 
         // POST: api/Incidents
         [HttpPost]
