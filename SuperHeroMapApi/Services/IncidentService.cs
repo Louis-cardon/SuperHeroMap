@@ -20,7 +20,7 @@
 
         public async Task<IEnumerable<Incident>> GetIncidents()
         {
-            return await _context.Incidents.Include(f=>f.IncidentResource).ToListAsync();
+            return await _context.Incidents.Include(f=>f.IncidentResource).Include(f=>f.SuperHeroIncidents).ThenInclude(f=>f.SuperHero).ToListAsync();
         }
 
         public async Task<Incident> GetIncident(int id)
