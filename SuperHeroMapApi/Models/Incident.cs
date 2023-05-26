@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace SuperHeroMapApi.Models
 {
@@ -12,6 +13,7 @@ namespace SuperHeroMapApi.Models
         public double Longitude { get; set; } // Longitude de la position géographique de cet incident
         public bool IsResolved { get; set; } // Booléen qui indique si l'incident a été résolu
         public IncidentResource? IncidentResource { get; set; } // Référence à la ressource d'incident associée à cet incident
+        [JsonIgnore]
         public ICollection<SuperHeroIncident>? SuperHeroIncidents { get; set; } // Collection de références aux SuperHeroIncidents associés à cet incident
     }
 }
