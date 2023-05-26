@@ -25,7 +25,7 @@
 
         public async Task<Incident> GetIncident(int id)
         {
-            return await _context.Incidents.FindAsync(id);
+            return await _context.Incidents.Include(f => f.IncidentResource).FirstOrDefaultAsync(f=>f.Id == id);
         }
 
         public async Task AddIncident(Incident incident)
